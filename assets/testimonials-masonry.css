@@ -1,0 +1,82 @@
+/* Masonry container + sizing */
+/* Make the masonry container span the full content width */
+.tm-wrap {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;       /* remove inner padding */
+  font-family: "IBM Plex", sans-serif;
+}
+.tm-grid { position: relative; }
+.tm-sizer { width: 25%; }           /* default 4 columns */
+.tm-gutter-sizer { width: 16px; }   /* gutter size for Masonry */
+
+.tm-item {
+  width: 25%;                        /* must match .tm-sizer by default */
+  margin-bottom: 16px;               /* fallback spacing before Masonry kicks in */
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e9eef5;
+  border-radius: 0;
+  padding: 2em 3em 3em 3em;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.04), 0 1px 1px rgba(16,24,40,0.04);
+}
+
+.tm-quote {
+  margin: 0 0 10px 0;
+  color: #3E474F;
+  font-size: 1em;
+  line-height: 1.45;
+  font-weight:300;
+}
+
+.tm-cite {
+  padding-top:1.15em;
+  color: #475569;
+  font-size: 1em;
+}
+
+.tm-avatar {
+  height:64px;
+  width:auto;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 1.55em;
+  border: none;
+}
+
+article.tm-item blockquote{
+  border-inline-start: 2px solid #FF6B6B!important;
+}
+
+
+/* Responsive columns via data-columns (desktop cap) */
+.tm-wrap[data-columns="1"] .tm-sizer,
+.tm-wrap[data-columns="1"] .tm-item { width: 100%; }
+.tm-wrap[data-columns="2"] .tm-sizer,
+.tm-wrap[data-columns="2"] .tm-item { width: calc(50% - 8px); }
+.tm-wrap[data-columns="3"] .tm-sizer,
+.tm-wrap[data-columns="3"] .tm-item { width: calc(33.333% - 10.67px); }
+.tm-wrap[data-columns="4"] .tm-sizer,
+.tm-wrap[data-columns="4"] .tm-item { width: calc(25% - 12px); }
+.tm-wrap[data-columns="5"] .tm-sizer,
+.tm-wrap[data-columns="5"] .tm-item { width: calc(20% - 12.8px); }
+.tm-wrap[data-columns="6"] .tm-sizer,
+.tm-wrap[data-columns="6"] .tm-item { width: calc(16.666% - 13.33px); }
+
+/* Breakpoints that auto-reduce columns on smaller screens */
+@media (max-width: 1024px) {
+  .tm-sizer, .tm-item { width: calc(33.333% - 10.67px) !important; }
+}
+@media (max-width: 768px) {
+  .tm-sizer, .tm-item { width: calc(50% - 8px) !important; }
+}
+@media (max-width: 520px) {
+  .tm-sizer, .tm-item { width: 100% !important; }
+}
+
+/* Prefers-reduced-motion: make subtle */
+@media (prefers-reduced-motion: reduce) {
+  .tm-item { transition: none; }
+}

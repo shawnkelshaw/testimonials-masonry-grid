@@ -1,0 +1,15 @@
+# macOS metadata
+._*
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
