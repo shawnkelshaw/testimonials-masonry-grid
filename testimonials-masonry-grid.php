@@ -69,6 +69,7 @@ class TM_Masonry_Testimonials {
             'orderby'        => 'date',
             'columns'        => 4, // affects CSS via data attribute
             'category'       => '', // optional taxonomy if you add one later
+            'id'             => '', // specific testimonial ID(s) - comma-separated
         ], $atts, 'testimonials_masonry');
 
         $args = [
@@ -78,6 +79,13 @@ class TM_Masonry_Testimonials {
             'orderby'        => sanitize_text_field($atts['orderby']),
             'no_found_rows'  => true,
         ];
+
+        // If specific ID(s) provided, query only those testimonials
+        if (!empty($atts['id'])) {
+            $ids = array_map('intval', explode(',', $atts['id']));
+            $args['post__in'] = $ids;
+            $args['orderby'] = 'post__in'; // maintain order of IDs provided
+        }
 
         $q = new WP_Query($args);
 

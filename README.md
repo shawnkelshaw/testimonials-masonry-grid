@@ -39,6 +39,7 @@ Display testimonials using the shortcode:
 | `order` | `DESC` | Sort order (`ASC` or `DESC`) |
 | `orderby` | `date` | Sort by field (e.g., `date`, `title`, `rand`) |
 | `columns` | `4` | Number of columns on desktop (1-6) |
+| `id` | _(empty)_ | Specific testimonial ID(s) to display (comma-separated) |
 
 ### Examples
 
@@ -55,6 +56,21 @@ Display testimonials using the shortcode:
 **Single column layout:**
 ```
 [testimonials_masonry columns="1"]
+```
+
+**Display a specific testimonial by ID:**
+```
+[testimonials_masonry id="123"]
+```
+
+**Display multiple specific testimonials:**
+```
+[testimonials_masonry id="123,456,789"]
+```
+
+**Display specific testimonial in single column:**
+```
+[testimonials_masonry id="123" columns="1"]
 ```
 
 ## Adding Testimonials
